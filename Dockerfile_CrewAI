@@ -1,0 +1,8 @@
+FROM python:3.11-slim
+WORKDIR /app
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y git curl build-essential
+RUN python -m pip install --upgrade pip
+RUN pip install crewai crewai-tools openai==1.99.9
+COPY test_crewai.py /app/test_crewai.py
+RUN mkdir -p /app/log

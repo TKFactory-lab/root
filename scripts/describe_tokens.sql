@@ -1,0 +1,2 @@
+DESCRIBE tokens;
+SELECT * FROM tokens LIMIT 10;
