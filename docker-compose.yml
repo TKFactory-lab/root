@@ -1,0 +1,91 @@
+version: '3.8'
+
+services:
+  redmine:
+    image: redmine:latest
+    container_name: redmine
+    ports:
+      - "3000:3000"
+    environment:
+      REDMINE_DB_MYSQL: db
+      REDMINE_DB_DATABASE: redmine_prod
+      REDMINE_DB_USERNAME: redmine
+      REDMINE_DB_PASSWORD: secret
+    volumes:
+      - redmine-data:/usr/src/redmine/files
+    networks:
+      - crewai-docker_default
+    healthcheck:
+      test: ["CMD-SHELL","(wget -qO- http://localhost:3000/ >/dev/null 2>&1) || (curl -f http://localhost:3000/ >/dev/null 2>&1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0
+    container_name: db
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: redmine_prod
+      MYSQL_USER: redmine
+      MYSQL_PASSWORD: secret
+    networks:
+      - crewai-docker_default
+    healthcheck:
+      test: ["CMD","mysqladmin","ping","-h","localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - redmine-db-data:/var/lib/mysql
+    restart: unless-stopped
+
+  crewai_app:
+    build: .
+    container_name: crewai_app
+    volumes:
+      - .:/app
+    networks:
+      - crewai-docker_default
+    depends_on:
+      - redmine
+    restart: unless-stopped
+    command: ./start.sh
+
+  rfp_scheduler:
+    image: redmine:latest
+    container_name: rfp_scheduler
+    volumes:
+      - ./scripts:/usr/src/redmine/scripts:ro
+      - ./scripts/cron-entrypoint.sh:/usr/local/bin/cron-entrypoint.sh:ro
+      - ./log:/tmp
+    networks:
+      - crewai-docker_default
+    depends_on:
+      - redmine
+    environment:
+      REDMINE_DB_MYSQL: db
+      REDMINE_DB_DATABASE: redmine_prod
+      REDMINE_DB_USERNAME: redmine
+      REDMINE_DB_PASSWORD: secret
+      RAILS_ENV: production
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      # CrewAI webhook configuration - defaults point to crewai_app on same network
+      CREWAI_AGENT_WEBHOOK: ${CREWAI_AGENT_WEBHOOK:-http://crewai_app:8000/webhook}
+      CREWAI_AGENT_TOKEN: ${CREWAI_AGENT_TOKEN:-}
+      CREWAI_AGENT_USERS: ${CREWAI_AGENT_USERS:-nobu,hide,yasu}
+      REDMINE_URL: ${REDMINE_URL:-http://redmine:3000}
+      REDMINE_API_KEY: ${REDMINE_API_KEY:-}
+    restart: unless-stopped
+    entrypoint: ["/bin/bash","/usr/local/bin/cron-entrypoint.sh"]
+
+networks:
+  crewai-docker_default:
+    external: true
+
+volumes:
+  redmine-data:
+  redmine-db-data:

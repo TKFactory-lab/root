@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "priority": "高",
+        "acceptance_criteria": "ユーザーが正しい情報を入力した場合にのみログインできる",
+        "user_story": "ユーザーはログインできる"
+    },
+    {
+        "id": 2,
+        "priority": "中",
+        "acceptance_criteria": "ユーザーが自由にTo-Doリストを作成、編集、削除できる",
+        "user_story": "ユーザーはTo-Doリストを管理できる"
+    }
+]
