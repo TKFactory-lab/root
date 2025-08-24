@@ -5,6 +5,7 @@
 # Python virtual env created for local dev
 final_crewai_env/
 
+
 # Logs and runtime artifacts
 log/
 /tmp/
