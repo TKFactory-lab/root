@@ -23,12 +23,13 @@ jobs:
         run: |
           ls -la docs/roadmap_reports || true
       - name: Send to messaging (Slack or Teams, optional)
-        if: ${{ secrets.SLACK_WEBHOOK_URL != '' || secrets.TEAMS_WEBHOOK_URL != '' }}
+        # secrets はワークフロー構文の一部の場所で参照できない場合があるため
+        # ここでは secrets を環境変数に割り当て、実行時にシェルで存在確認します。
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
         run: |
-          # Teams の方が設定されていれば優先して使用します。デフォルトは dry-run（安全）です。
+          # Teams の方が設定されていれば優先して使用します。デフォルトは実送信（--dry-run false）です。
           if [ -n "$TEAMS_WEBHOOK_URL" ]; then
             python3 scripts/send_roadmap_to_slack.py --latest --provider teams --dry-run false
           elif [ -n "$SLACK_WEBHOOK_URL" ]; then
