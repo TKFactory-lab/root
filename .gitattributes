@@ -1,10 +1,24 @@
+.gitattributes - Git LFS tracking rules for large binaries and native extensions
+# Added 2025-08-24 by automation to avoid large binary check-ins.
+# Patterns chosen from large-files.csv analysis (e.g. *.so, lib*.so.*, native bins in modules/**/bin)
+
+# Native Python/CPython extension modules
 *.so filter=lfs diff=lfs merge=lfs -text
+*.abi3.so filter=lfs diff=lfs merge=lfs -text
+*.cpython-*-*.so filter=lfs diff=lfs merge=lfs -text
+# Shared libraries with versioned suffixes (e.g. libarrow.so.2100)
 lib*.so* filter=lfs diff=lfs merge=lfs -text
+# Generic dynamic libraries / platform binaries
 *.pyd filter=lfs diff=lfs merge=lfs -text
 *.dll filter=lfs diff=lfs merge=lfs -text
 *.dylib filter=lfs diff=lfs merge=lfs -text
-modules/**/*.so filter=lfs diff=lfs merge=lfs -text
+# Native helper binaries often bundled under modules/**/bin
 modules/**/bin/* filter=lfs diff=lfs merge=lfs -text
+# PyPI native wheels/lib directories (catch-alls)
+modules/**/native/** filter=lfs diff=lfs merge=lfs -text
+# Exclude text/python sources (do NOT track .py)
+!*.py
+modules/**/*.so filter=lfs diff=lfs merge=lfs -text
 backups/** filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
 *.tar.gz filter=lfs diff=lfs merge=lfs -text
