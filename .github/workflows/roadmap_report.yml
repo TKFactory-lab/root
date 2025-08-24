@@ -1,0 +1,43 @@
+name: Crewai Roadmap Report
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # 毎週日曜 UTC
+  workflow_dispatch: {}
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install requirements (if any)
+        run: |
+          python -V
+      - name: Generate roadmap report
+        run: |
+          python3 scripts/generate_roadmap_report.py
+      - name: List reports
+        run: |
+          ls -la docs/roadmap_reports || true
+      - name: Send to messaging (Slack or Teams, optional)
+        if: ${{ secrets.SLACK_WEBHOOK_URL != '' || secrets.TEAMS_WEBHOOK_URL != '' }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
+        run: |
+          # Teams の方が設定されていれば優先して使用します。デフォルトは dry-run（安全）です。
+          if [ -n "$TEAMS_WEBHOOK_URL" ]; then
+            python3 scripts/send_roadmap_to_slack.py --latest --provider teams --dry-run false
+          elif [ -n "$SLACK_WEBHOOK_URL" ]; then
+            python3 scripts/send_roadmap_to_slack.py --latest --provider slack --dry-run false
+          else
+            echo "No webhook configured; skipping."
+          fi
+      - name: Upload reports artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: roadmap-reports
+          path: docs/roadmap_reports
