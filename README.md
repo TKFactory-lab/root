@@ -1,36 +1,60 @@
-﻿## CrewAI 繝ｪ繝昴ず繝医Μ・育ｰ｡譏・README・・
-遏ｭ縺擾ｼ壹％縺ｮ繝ｪ繝昴ず繝医Μ縺ｯ Redmine 縺ｨ騾｣謳ｺ縺吶ｋ CrewAI 繧ｵ繝ｼ繝薙せ縺ｮ髢狗匱逕ｨ繝ｯ繝ｼ繧ｯ繧ｹ繝壹・繧ｹ縺ｧ縺吶・荳ｻ隕√↑隕∫ｴ縺ｯ Docker Compose 繝吶・繧ｹ縺ｮ繧ｵ繝ｼ繝薙せ鄒､・・rewai_app縲〉edmine縲‥b縲］ginx縲〉fp_scheduler 遲会ｼ峨→縲√ヶ繝ｩ繧ｦ繧ｶ縺ｧ菴ｿ縺・メ繝｣繝・ヨ UI (`ui/chat.html`) 縺ｧ縺吶・
-### 蠢・ｦ√↑蜑肴署
-- Docker / Docker Compose
-- Git 縺ｨ Git LFS ・亥､ｧ縺阪↑繝阪う繝・ぅ繝悶ヰ繧､繝翫Μ繧・LFS 縺ｧ邂｡逅・＠縺ｦ縺・∪縺呻ｼ・- Windows 迺ｰ蠅・〒縺ｮ髢狗匱: PowerShell 繧貞茜逕ｨ縺励∪縺呻ｼ・EADME 縺ｮ謇矩・・ PowerShell 蜷代￠縺ｮ萓九ｒ蜷ｫ縺ｿ縺ｾ縺呻ｼ・
-### 驥崎ｦ・ｼ唹PENAI_API_KEY 縺ｮ謇ｱ縺・- 繧ｻ繧ｭ繝･繝ｪ繝・ぅ縺ｮ縺溘ａ縲～OPENAI_API_KEY` 縺ｯ蜿ｯ閭ｽ縺ｪ髯舌ｊ Windows 縺ｮ迺ｰ蠅・､画焚・・ser 縺ｾ縺溘・ System・峨↓險ｭ螳壹＠縺ｦ縺上□縺輔＞縲・  萓具ｼ・owerShell, User 繧ｹ繧ｳ繝ｼ繝暦ｼ・
+CrewAI Docker 簡易 README
 
-  ```powershell
-  [Environment]::SetEnvironmentVariable('OPENAI_API_KEY','sk-xxxx-REPLACE','User')
-  ```
+概要
+----
+このリポジトリは CrewAI 開発・運用向けの Docker 構成と運用メモを含みます。
 
-### 蛻晏屓繧ｻ繝・ヨ繧｢繝・・・育ｰ｡譏難ｼ・1. Git LFS 繧偵う繝ｳ繧ｹ繝医・繝ｫ縺励※譛牙柑蛹・   ```powershell
-   git lfs install --local
-   ```
-2. `.env` 繧堤｢ｺ隱阪＠縺ｦ蠢・ｦ√↑蛟､・・EDMINE_URL, REDMINE_API_KEY 遲会ｼ峨ｒ繧ｻ繝・ヨ縺吶ｋ・域里縺ｫ `.env` 縺ｫ萓九′蜷ｫ縺ｾ繧後※縺・∪縺呻ｼ峨・   - `CREWAI_AGENT_WEBHOOK_INTERNAL` 縺ｯ繧ｳ繝ｳ繝・リ髢鍋畑・井ｾ・ http://crewai_app:8000/webhook・・   - `CREWAI_AGENT_WEBHOOK_HOST` 縺ｯ繝帙せ繝・繝悶Λ繧ｦ繧ｶ縺九ｉ縺ｮ繧｢繧ｯ繧ｻ繧ｹ逕ｨ・井ｾ・ http://localhost:8000/webhook・・
-### 襍ｷ蜍包ｼ磯幕逋ｺ逕ｨ・・```powershell
-# 繝ｪ繝昴ず繝医Μ繝ｫ繝ｼ繝医〒
-docker compose up -d --build
-docker compose logs -f crewai_app
-```
+主な内容
+----
+- webhook 受信 / Socket.IO ベースのチャットサーバ
+- Redmine 連携スクリプト
+- UI（`ui/chat.html` を使った簡易クライアント）
+- docker-compose 設定、起動/監視手順
 
-### 繝悶Λ繧ｦ繧ｶ繝√Ε繝・ヨ UI
-- `ui/chat.html` 繧偵ヶ繝ｩ繧ｦ繧ｶ縺ｧ髢九″縲ヾocket.IO 縺ｧ謗･邯壹＠縺ｦ `nobu` 縺ｪ縺ｩ縺ｮ繧ｨ繝ｼ繧ｸ繧ｧ繝ｳ繝医→莨夊ｩｱ縺ｧ縺阪∪縺吶・- production 縺ｧ縺ｯ Nginx + Gunicorn 繧堤ｵ檎罰縺吶ｋ讒区・縺後≠繧翫∪縺呻ｼ・docker-compose.yml` 繧貞盾辣ｧ・峨・
-### Git LFS / 螟ｧ繝輔ぃ繧､繝ｫ縺ｫ縺､縺・※・医％縺ｮ繝ｪ繝昴ず繝医Μ縺ｮ迴ｾ迥ｶ・・- 螟ｧ縺阪↑繝阪う繝・ぅ繝匁僑蠑ｵ・・modules/**/*.so` 遲会ｼ峨・ Git LFS 縺ｫ遘ｻ陦梧ｸ医∩縺ｧ縺呻ｼ亥ｱ･豁ｴ譖ｸ縺肴鋤縺医ｒ螳滓命・峨・- 螻･豁ｴ繧呈嶌縺肴鋤縺医◆縺溘ａ縲∵里縺ｫ繧ｯ繝ｭ繝ｼ繝ｳ貂医∩縺ｮ髢狗匱閠・・繝ｪ繧ｻ繝・ヨ縺悟ｿ・ｦ√↓縺ｪ繧翫∪縺・
-  ```powershell
-  git fetch origin
-  git reset --hard origin/my-work-backup
-  ```
+前提
+----
+- Docker と docker-compose がインストールされていること。
+- Windows で運用する場合、`OPENAI_API_KEY` はシステムまたはユーザー環境変数として設定することを推奨します（セキュリティ上 .env に直接書かないため）。
+  例（管理者 PowerShell でシステムに永続化）:
 
-### 莉雁ｾ後・豕ｨ諢冗せ
-- 繝舌う繝翫Μ繧・ｻｮ諠ｳ迺ｰ蠅・ｒ隱､縺｣縺ｦ繧ｳ繝溘ャ繝医＠縺ｪ縺・ｈ縺・`.gitignore` 繧呈紛蛯吶＠縺ｾ縺励◆縲よ里縺ｫ繧ｳ繝溘ャ繝域ｸ医∩縺ｮ螟ｧ繝輔ぃ繧､繝ｫ縺ｯ LFS 縺ｫ遘ｻ縺励∪縺励◆縲・- Git LFS 縺ｮ繧ｹ繝医Ξ繝ｼ繧ｸ蛻ｶ髯舌↓豕ｨ諢上＠縺ｦ縺上□縺輔＞・医・繝ｩ繝ｳ縺ｫ繧医▲縺ｦ荳企剞縺ゅｊ・峨・
-### 繝医Λ繝悶Ν繧ｷ繝･繝ｼ繝・- 莉｣陦ｨ萓・- `.gitattributes` 縺ｧ `is not a valid attribute name` 縺ｨ縺・≧隴ｦ蜻翫′蜃ｺ繧句ｴ蜷医∝・鬆ｭ縺ｫ菴吝・縺ｪ繝・く繧ｹ繝医ｄ蜷ｦ螳壹ヱ繧ｿ繝ｼ繝ｳ縺後≠繧句庄閭ｽ諤ｧ縺後≠繧翫∪縺吶ゅΜ繝昴ず繝医Μ縺ｫ縺ｯ繝倥ャ繝繧ｳ繝｡繝ｳ繝亥喧縺ｨ辟｡螳ｳ蛹悶ｒ驕ｩ逕ｨ貂医∩縺ｧ縺吶・- 繝√Ε繝・ヨ UI 縺梧磁邯壹〒縺阪↑縺・ｴ蜷茨ｼ啻crewai_app` 繧ｳ繝ｳ繝・リ縺瑚ｵｷ蜍輔＠縺ｦ縺・ｋ縺九～/health` 縺・OK 縺狗｢ｺ隱阪＠縲¨ginx 縺ｮ繝励Ο繧ｭ繧ｷ險ｭ螳夲ｼ・nginx.conf`・峨→繝昴・繝医ｒ繝√ぉ繝・け縺励※縺上□縺輔＞縲・
-### 騾｣邨｡蜈・/ 谺｡縺ｮ繧｢繧ｯ繧ｷ繝ｧ繝ｳ
-- 譌｢蟄倥け繝ｭ繝ｼ繝ｳ繧呈戟縺､繝｡繝ｳ繝舌・縺ｸ螻･豁ｴ譖ｸ縺肴鋤縺医・蜻ｨ遏･繧定｡後▲縺ｦ縺上□縺輔＞縲・- README 縺ｮ陬懆ｶｳ・医ｈ繧願ｩｳ邏ｰ縺ｪ繝・・繝ｭ繧､謇矩・ゝLS 險ｭ螳壹，I 繝ｯ繝ｼ繧ｯ繝輔Ο繝ｼ縺ｪ縺ｩ・峨ｒ霑ｽ蜉蟶梧悍縺ｪ繧画欠遉ｺ縺励※縺上□縺輔＞縲・
+  setx OPENAI_API_KEY "<your-key>" /M
+
+クイックスタート
+----
+1. リポジトリのルートで `.env` を確認または `.env.example` を参照して作成します。
+2. Windows の場合は上記で `OPENAI_API_KEY` を設定します。
+3. コンテナをビルドして起動します:
+
+   docker-compose up -d --build
+
+4. サービス確認:
+   - アプリのヘルスチェック: http://localhost:5000/health
+   - UI (nginx 経由): http://localhost:8080/ または `ui/chat.html` を開く
+
+UI の使い方（簡易）
+----
+- ブラウザで `ui/chat.html` を開き、接続先ホストに `http://localhost:8080`（または実際のホスト）を指定して接続してください。
+- Socket.IO は初期の HTTP GET で 404 を返すことがありますが、Socket.IO 接続自体が成功すればチャットが動作します。
+
+文字化け（エンコード）対処
+----
+GitHub 上で README が文字化けしている場合、ファイルが UTF-16 等で保存されている可能性があります。PowerShell で UTF-8 に再エクスポートする例:
+
+  git show origin/my-work-backup:README.md | Out-File -FilePath README.md -Encoding utf8
+  git add README.md
+  git commit -m "Re-encode README as UTF-8"
+  git push origin HEAD
+
+上記で修正されない場合は、ローカルの編集ツール（VSCode など）でエンコーディングを UTF-8 に変えて保存し、同様にコミット／プッシュしてください。
+
+トラブルシューティング（短いヒント）
+----
+- OPENAI_API_KEY が未設定だと AI 呼び出しが失敗します（ログ: 認証エラー）。
+- Gunicorn / eventlet / socketio の起動エラーが出る場合は、該当ログのエラーメッセージ（ImportError や NameError）を貼ってください。
+
+連絡先・サポート
+----
+問題が続く場合、発生している症状（ログ抜粋、コマンド出力）を貼ってください。こちらで追加対応します。
+
 ---
-遏ｭ縺・README 繧定ｿｽ蜉縺励∪縺励◆縲ょｿ・ｦ√〒縺ゅｌ縺ｰ闍ｱ隱樒沿繧・ｩｳ邏ｰ縺ｪ驕狗畑繝峨く繝･繝｡繝ｳ繝医ｒ霑ｽ蜉縺励∪縺・
+（このファイルは UTF-8 で保存されています）
