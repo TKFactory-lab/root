@@ -15,3 +15,25 @@ usr/src/redmine/files/crewai_process_rfps_out.txt
 .vscode/
 *.swp
 *.swo
+
+# Prevent committing built native extensions, wheels, and large module binaries
+modules/**/*.so
+modules/**/*.abi3.so
+modules/**/bin/
+modules/**/native/
+
+# Python build / cache
+__pycache__/
+*.py[cod]
+build/
+dist/
+*.egg-info/
+
+# Wheels and archives
+*.whl
+*.tar.gz
+*.zip
+
+# OS files
+Thumbs.db
+.DS_Store
