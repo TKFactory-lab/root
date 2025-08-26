@@ -46,14 +46,15 @@ services:
   crewai_app:
     build: .
     container_name: crewai_app
-    volumes:
-      - .:/app
     networks:
       - crewai-docker_default
     depends_on:
       - redmine
     restart: unless-stopped
-    command: ./start.sh
+    command: /bin/bash /app/start.sh
+    ports:
+      - "5000:5000"
+      - "8000:8000"
 
   rfp_scheduler:
     image: redmine:latest
@@ -73,7 +74,6 @@ services:
       REDMINE_DB_PASSWORD: secret
       RAILS_ENV: production
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
-      # CrewAI webhook configuration - defaults point to crewai_app on same network
       CREWAI_AGENT_WEBHOOK: ${CREWAI_AGENT_WEBHOOK:-http://crewai_app:8000/webhook}
       CREWAI_AGENT_TOKEN: ${CREWAI_AGENT_TOKEN:-}
       CREWAI_AGENT_USERS: ${CREWAI_AGENT_USERS:-nobu,hide,yasu}
