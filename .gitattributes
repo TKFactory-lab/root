@@ -17,7 +17,8 @@ modules/**/bin/* filter=lfs diff=lfs merge=lfs -text
 # PyPI native wheels/lib directories (catch-alls)
 modules/**/native/** filter=lfs diff=lfs merge=lfs -text
 # Exclude text/python sources (do NOT track .py)
-!*.py
+# Use escaped leading exclamation for literal '!' pattern in gitattributes
+\!*.py
 modules/**/*.so filter=lfs diff=lfs merge=lfs -text
 backups/** filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
