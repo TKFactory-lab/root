@@ -1,21 +1,29 @@
 #!/bin/bash
+set -e
 
-# Redmineサービスが利用可能になるのを待機
-# HTTPで到達可能か確認する。10秒間隔で最大30回リトライ（最大5分）
+# Wait for Redmine service to become available.
+# Retry every 10s up to 30 times (~5 minutes).
 for i in $(seq 1 30); do
   if curl -sSf "http://redmine:3000/" >/dev/null 2>&1; then
-    echo "Redmineサービスが利用可能になりました！"
+    echo "Redmine service is available"
     break
   else
-    echo "Redmineサービスが利用可能になるのを待機しています... ($i/30)"
+    echo "Waiting for Redmine to become available... ($i/30)"
     sleep 10
   fi
 done
 
-# スクリプトを実行
+# Run the main Python manager (runs once)
+# Start the Socket.IO receiver (so the chat UI can connect) in background
+# This script is lightweight; run it in background and log to /tmp/socketio.log
+if [ -f ./scripts/crewai_webhook_receiver_socketio.py ]; then
+  echo "Starting Socket.IO receiver..."
+  nohup python ./scripts/crewai_webhook_receiver_socketio.py --host 0.0.0.0 --port 8000 > /tmp/socketio.log 2>&1 &
+  sleep 0.5
+fi
+
+# Run the main Python manager (runs once)
 python project_manager.py
 
-# project_manager.py は一度処理を実行して終了する想定のため
-# コンテナがすぐ終了して再起動を繰り返さないよう、
-# 正常終了後はプロセスをフォアグラウンドで待機させます。
+# Keep the container alive after the manager finishes
 exec tail -f /dev/null

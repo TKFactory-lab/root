@@ -6,6 +6,7 @@ WORKDIR /app
 
 # 必要なシステム依存関係をインストール
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    bash \
     git \
     build-essential \
     libpq-dev \
@@ -21,8 +22,11 @@ RUN python -m pip install --upgrade pip \
 # アプリケーションコードをコンテナにコピーする
 COPY . .
 
+# Normalize line endings for shell scripts to avoid CRLF issues when running in Linux
+RUN if [ -f ./start.sh ]; then sed -i 's/\r$//' ./start.sh; fi
+
 # start.shに実行権限を付与する
 RUN chmod +x ./start.sh
 
-# コンテナ起動時にstart.shを実行する
-CMD ["./start.sh"]
+# コンテナ起動時に bash で start.sh を実行する（shebang/行末の差異回避）
+CMD ["bash", "./start.sh"]
