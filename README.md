@@ -1,4 +1,4 @@
-## CrewAI リポジトリ（簡易 README）
+﻿## CrewAI リポジトリ（簡易 README）
 
 短く：このリポジトリは Redmine と連携する CrewAI サービスの開発用ワークスペースです。
 主要な要素は Docker Compose ベースのサービス群（crewai_app、redmine、db、nginx、rfp_scheduler 等）と、ブラウザで使うチャット UI (`ui/chat.html`) です。
