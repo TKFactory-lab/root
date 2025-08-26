@@ -56,5 +56,11 @@ docker compose logs -f crewai_app
 - 既存クローンを持つメンバーへ履歴書き換えの周知を行ってください。
 - README の補足（より詳細なデプロイ手順、TLS 設定、CI ワークフローなど）を追加希望なら指示してください。
 
+### 補助ツールとCI
+- `tools/fix_gitattributes_bom.ps1` - `.gitattributes` の BOM/エンコーディングを正規化します。
+- `tools/git_lfs_migrate_helper.ps1` - `large-files.csv` の候補に基づく `git lfs migrate` の dry-run と実行補助をします（履歴書き換え注意）。
+- `tools/socketio_smoke_check.py` - デプロイ後に HTTP / Socket.IO の簡易接続テストを実行します。
+- `.github/workflows/smoke-test.yml` - 手動トリガーでデプロイ後に上の smoke check を実行する GitHub Actions ワークフローのテンプレート。
+
 ---
 短い README を追加しました。必要であれば英語版や詳細な運用ドキュメントを追加します.

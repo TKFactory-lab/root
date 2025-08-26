@@ -1,4 +1,4 @@
-.gitattributes - Git LFS tracking rules for large binaries and native extensions
+# .gitattributes - Git LFS tracking rules for large binaries and native extensions
 # Added 2025-08-24 by automation to avoid large binary check-ins.
 # Patterns chosen from large-files.csv analysis (e.g. *.so, lib*.so.*, native bins in modules/**/bin)
 
@@ -16,8 +16,7 @@ lib*.so* filter=lfs diff=lfs merge=lfs -text
 modules/**/bin/* filter=lfs diff=lfs merge=lfs -text
 # PyPI native wheels/lib directories (catch-alls)
 modules/**/native/** filter=lfs diff=lfs merge=lfs -text
-# Exclude text/python sources (do NOT track .py)
-!*.py
+# Modules native shared libs
 modules/**/*.so filter=lfs diff=lfs merge=lfs -text
 backups/** filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
