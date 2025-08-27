@@ -18,6 +18,13 @@ modules/**/bin/* filter=lfs diff=lfs merge=lfs -text
 modules/**/native/** filter=lfs diff=lfs merge=lfs -text
 # Modules native shared libs
 modules/**/*.so filter=lfs diff=lfs merge=lfs -text
+# Ensure consistent line endings and avoid LF->CRLF warnings on Windows
+* text=auto eol=lf
+# Treat virtual envs and site-packages as binary (no line-ending conversion)
+final_crewai_env/** -text
+final_crewai_env_corrupt*/** -text
+venv/** -text
+env/** -text
 backups/** filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
 *.tar.gz filter=lfs diff=lfs merge=lfs -text
