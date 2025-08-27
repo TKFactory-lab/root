@@ -1,0 +1,11 @@
+﻿D:/ai/crewai/crewai-docker/final_crewai_env/Scripts/python.exe : Traceback (most recent call last):
+発生場所 行:1 文字:1
++ D:/ai/crewai/crewai-docker/final_crewai_env/Scripts/python.exe -u too ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "D:\ai\crewai\crewai-docker\tools\http_smoke_test.py", line 1, in <module>
+    from scripts import crewai_webhook_receiver_socketio as server
+ModuleNotFoundError: No module named 'scripts'
+

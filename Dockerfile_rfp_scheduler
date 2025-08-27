@@ -1,0 +1,10 @@
+FROM redmine:latest
+
+# Copy local helper scripts into the image so the scheduler can run them
+COPY ./scripts /usr/src/redmine/scripts
+COPY ./scripts/cron-entrypoint.sh /usr/local/bin/cron-entrypoint.sh
+
+RUN chmod +x /usr/local/bin/cron-entrypoint.sh || true
+RUN chmod -R a+rX /usr/src/redmine/scripts || true
+
+ENTRYPOINT ["/usr/local/bin/cron-entrypoint.sh"]

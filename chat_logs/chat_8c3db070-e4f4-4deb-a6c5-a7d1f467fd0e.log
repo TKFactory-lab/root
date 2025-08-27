@@ -1,0 +1,2 @@
+{"session": "8c3db070-e4f4-4deb-a6c5-a7d1f467fd0e", "agent": "nobu", "text": "テストログ生成 1", "direction": "user", "ts": 1756318422.3344707}
+{"session": "8c3db070-e4f4-4deb-a6c5-a7d1f467fd0e", "agent": "nobu", "text": "[nobu] 受け取りました。要約: テストログ生成 1", "direction": "agent", "ts": 1756318422.3952696}

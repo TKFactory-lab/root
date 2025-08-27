@@ -1,0 +1,9 @@
+.env
+log/user_tokens_out.txt
+log/notify_rfps_out.txt
+log/process_rfps_out.txt
+log/run_notify_exec.txt
+log/run_process_exec.txt
+notify_rfps_out.txt
+process_rfps_out.txt
+user_tokens_out.txt

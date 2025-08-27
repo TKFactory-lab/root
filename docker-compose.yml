@@ -52,9 +52,6 @@ services:
       - redmine
     restart: unless-stopped
     command: /bin/bash /app/start.sh
-    ports:
-      - "5000:5000"
-      - "8000:8000"
 
   rfp_scheduler:
     image: redmine:latest

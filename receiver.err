@@ -1,0 +1,27 @@
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:root:HTTP /chat received: {'session': '8c3db070-e4f4-4deb-a6c5-a7d1f467fd0e', 'agent': 'nobu', 'text': 'ƒeƒXƒgƒƒO¶¬ 1', 'direction': 'user', 'ts': 1756318422.3344707}
+INFO:root:HTTP /chat reply: {'session': '8c3db070-e4f4-4deb-a6c5-a7d1f467fd0e', 'agent': 'nobu', 'text': '[nobu] ó‚¯æ‚è‚Ü‚µ‚½B—v–ñ: ƒeƒXƒgƒƒO¶¬ 1', 'direction': 'agent', 'ts': 1756318422.3952696}
+INFO:werkzeug:127.0.0.1 - - [28/Aug/2025 03:13:42] "POST /chat HTTP/1.1" 200 -
+INFO:root:HTTP /chat received: {'session': '6bef55fa-dab0-4d95-bd7e-059c43c96b08', 'agent': 'nobu', 'text': 'ƒeƒXƒgƒƒO¶¬ 2', 'direction': 'user', 'ts': 1756318422.6150026}
+INFO:root:HTTP /chat reply: {'session': '6bef55fa-dab0-4d95-bd7e-059c43c96b08', 'agent': 'nobu', 'text': '[nobu] ó‚¯æ‚è‚Ü‚µ‚½B—v–ñ: ƒeƒXƒgƒƒO¶¬ 2', 'direction': 'agent', 'ts': 1756318422.6769037}
+INFO:werkzeug:127.0.0.1 - - [28/Aug/2025 03:13:42] "POST /chat HTTP/1.1" 200 -
+INFO:root:HTTP /chat received: {'session': 'bcc1b949-369b-4db0-885a-b383129b3321', 'agent': 'nobu', 'text': 'ƒeƒXƒgƒƒO¶¬ 3', 'direction': 'user', 'ts': 1756318422.895522}
+INFO:root:HTTP /chat reply: {'session': 'bcc1b949-369b-4db0-885a-b383129b3321', 'agent': 'nobu', 'text': '[nobu] ó‚¯æ‚è‚Ü‚µ‚½B—v–ñ: ƒeƒXƒgƒƒO¶¬ 3', 'direction': 'agent', 'ts': 1756318422.9883275}
+INFO:werkzeug:127.0.0.1 - - [28/Aug/2025 03:13:42] "POST /chat HTTP/1.1" 200 -
+INFO:root:HTTP /chat received: {'session': '58c52552-2206-4dc7-b948-7888c24c7d1d', 'agent': 'nobu', 'text': 'ƒeƒXƒgƒƒO¶¬ 4', 'direction': 'user', 'ts': 1756318423.2066827}
+INFO:root:HTTP /chat reply: {'session': '58c52552-2206-4dc7-b948-7888c24c7d1d', 'agent': 'nobu', 'text': '[nobu] ó‚¯æ‚è‚Ü‚µ‚½B—v–ñ: ƒeƒXƒgƒƒO¶¬ 4', 'direction': 'agent', 'ts': 1756318423.2674067}
+INFO:werkzeug:127.0.0.1 - - [28/Aug/2025 03:13:43] "POST /chat HTTP/1.1" 200 -
+INFO:root:HTTP /chat received: {'session': '2d4d24f0-b832-452c-94ff-1796a242275f', 'agent': 'nobu', 'text': 'ƒeƒXƒgƒƒO¶¬ 5', 'direction': 'user', 'ts': 1756318423.5011678}
+INFO:root:HTTP /chat reply: {'session': '2d4d24f0-b832-452c-94ff-1796a242275f', 'agent': 'nobu', 'text': '[nobu] ó‚¯æ‚è‚Ü‚µ‚½B—v–ñ: ƒeƒXƒgƒƒO¶¬ 5', 'direction': 'agent', 'ts': 1756318423.5623853}
+INFO:werkzeug:127.0.0.1 - - [28/Aug/2025 03:13:43] "POST /chat HTTP/1.1" 200 -
+INFO:root:HTTP /chat received: {'session': 'b9883dee-3777-46e1-8f3c-792f29a01758', 'agent': 'nobu', 'text': 'ƒeƒXƒgƒƒO¶¬ 6', 'direction': 'user', 'ts': 1756318423.7823517}
+INFO:root:HTTP /chat reply: {'session': 'b9883dee-3777-46e1-8f3c-792f29a01758', 'agent': 'nobu', 'text': '[nobu] ó‚¯æ‚è‚Ü‚µ‚½B—v–ñ: ƒeƒXƒgƒƒO¶¬ 6', 'direction': 'agent', 'ts': 1756318423.843065}
+INFO:werkzeug:127.0.0.1 - - [28/Aug/2025 03:13:43] "POST /chat HTTP/1.1" 200 -
+INFO:root:HTTP /chat received: {'session': '8963404e-6bfc-4f69-98d6-806577d9208d', 'agent': 'nobu', 'text': 'ƒeƒXƒgƒƒO¶¬ 7', 'direction': 'user', 'ts': 1756318424.0759995}
+INFO:root:HTTP /chat reply: {'session': '8963404e-6bfc-4f69-98d6-806577d9208d', 'agent': 'nobu', 'text': '[nobu] ó‚¯æ‚è‚Ü‚µ‚½B—v–ñ: ƒeƒXƒgƒƒO¶¬ 7', 'direction': 'agent', 'ts': 1756318424.136927}
+INFO:werkzeug:127.0.0.1 - - [28/Aug/2025 03:13:44] "POST /chat HTTP/1.1" 200 -
+INFO:root:HTTP /chat received: {'session': 'f3da55b8-7595-4e6e-9b2b-0403f01df888', 'agent': 'nobu', 'text': 'ƒeƒXƒgƒƒO¶¬ 8', 'direction': 'user', 'ts': 1756318424.369485}
+INFO:root:HTTP /chat reply: {'session': 'f3da55b8-7595-4e6e-9b2b-0403f01df888', 'agent': 'nobu', 'text': '[nobu] ó‚¯æ‚è‚Ü‚µ‚½B—v–ñ: ƒeƒXƒgƒƒO¶¬ 8', 'direction': 'agent', 'ts': 1756318424.4304378}
+INFO:werkzeug:127.0.0.1 - - [28/Aug/2025 03:13:44] "POST /chat HTTP/1.1" 200 -

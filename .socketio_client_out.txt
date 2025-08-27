@@ -1,0 +1,8 @@
+﻿D:/ai/crewai/crewai-docker/final_crewai_env/Scripts/python.exe : websocket-client package not installed, only polling transport is available
+発生場所 行:1 文字:1
++ D:/ai/crewai/crewai-docker/final_crewai_env/Scripts/python.exe tools/ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (websocket-clien...rt is available:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+connect error One or more namespaces failed to connect

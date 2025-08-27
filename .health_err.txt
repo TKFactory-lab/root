@@ -1,0 +1,7 @@
+﻿Invoke-RestMethod : 接続が切断されました: 接続が予期せずに閉じられました。
+発生場所 行:1 文字:8
++ try { (Invoke-RestMethod -Uri 'http://127.0.0.1:5000/health' -UseBasi ...
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-RestMethod]、WebException
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeRestMethodCommand
+ 
