@@ -1,17 +1,6 @@
-# Local environment file - do NOT commit
-.env
-.env.local
-
-# Python virtual env created for local dev
-final_crewai_env/
-
-
-# Logs and runtime artifacts
-log/
-/tmp/
-usr/src/redmine/files/crewai_process_rfps_out.txt
-
-# Editor files
-.vscode/
-*.swp
-*.swo
+﻿# Local envs and build artifacts
+.venv/
+backups/
+*.pyc
+__pycache__/
+.DS_Store
